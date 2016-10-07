@@ -11,6 +11,7 @@ bin_directory:
 	mkdir -p $(bin_dir)
 dependencies: shard.lock
 shard.lock: shard.yml
+	$(crystal) deps prune
 	$(crystal) deps
 	touch $@
 install: build
