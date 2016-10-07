@@ -13,5 +13,9 @@ module Franklin
     it "has a url" do
       expect(subject.url).to eq(url)
     end
+
+    it "is equal if fields are equal" do
+      expect(subject).to eq(Library.new(name, url))
+    end
   end
 end
