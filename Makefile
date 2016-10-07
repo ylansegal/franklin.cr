@@ -9,8 +9,10 @@ build: bin_directory dependencies
 	$(crystal) build --release -o $(bin_dir)/$(executable) src/cli.cr $(CRFLAGS)
 bin_directory:
 	mkdir -p $(bin_dir)
-dependencies:
+dependencies: shard.lock
+shard.lock: shard.yml
 	$(crystal) deps
+	touch $@
 install: build
 	cp $(bin_dir)/$(executable) /usr/local/bin/
 docs: build
