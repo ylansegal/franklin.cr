@@ -5,8 +5,15 @@ module Franklin
   describe Config do
     describe "#initialize" do
       subject { Config.from_yaml(yaml) }
-      let(yaml) { YAML.dump(data) }
-      let(data) { { libraries: [{ name: library.name, url: library.url }], default_type: default_type } }
+      let(yaml) {
+        <<-END
+        ---
+        :libraries:
+          - :name: #{library.name}
+            :url: #{library.url}
+        :default_type: #{default_type}
+        END
+       }
       let(library) { Library.new("Alexandria Library", "http://alexandria.book") }
       let(default_type) { "eBook" }
 
