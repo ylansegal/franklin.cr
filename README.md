@@ -2,8 +2,9 @@
 
 Franklin is a command line utility, written in crystal, that allows searching public libraries powered by Overdrive. It supports multiple library searching for those that have accounts in more than one library (city, county, state, etc.)
 
-
 I previously wrote a version of this library [in ruby][https://github.com/ylansegal/franklin]
+
+Currently, it's not in working condition yet.
 
 ## Installation
 
