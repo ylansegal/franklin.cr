@@ -3,5 +3,4 @@
 /lib/
 /.crystal/
 /.shards/
-
-
+/bin/
