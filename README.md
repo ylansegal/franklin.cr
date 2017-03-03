@@ -16,12 +16,12 @@ Franklin needs to be configured with information about the Overdrive libraries i
 
 ``` yml
 ---
-:libraries:
-  - :name: San Francisco Public Library
-    :url: http://sfpl.lib.overdrive.com
-  - :name: San Diego Public Library
-    :url: http://sdpl.lib.overdrive.com
-:default_type: eBook # Optional, will show all types if not set.
+libraries:
+  - name: San Francisco Public Library
+    url: http://sfpl.lib.overdrive.com
+  - name: San Diego Public Library
+    url: http://sdpl.lib.overdrive.com
+default_type: eBook # Optional, will show all types if not set.
 ```
 
 There needs to be a minimum of one library, but there is no maximum. The `name` can be anything and will be included when the search results are presented. The `url` should point to the domain of the public library. It can be obtained by visiting Overdrive's site for each library, copying the url and stripping everything after the domain name.

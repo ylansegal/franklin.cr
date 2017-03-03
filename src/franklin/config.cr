@@ -6,14 +6,8 @@ module Franklin
     DEFAULT_FILE_LOCATION = File.join(ENV["HOME"], ".franklin")
 
     YAML.mapping(
-      libraries: {
-        type: Array(Library),
-        key: ":libraries"
-      },
-      default_type: {
-        type: String,
-        key: ":default_type"
-      }
+      libraries: Array(Library),
+      default_type: String
     )
 
     def self.from_file(file : String | Nil = nil)

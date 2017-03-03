@@ -7,10 +7,10 @@ module Franklin
     let(yaml) {
       <<-END
       ---
-      :libraries:
-        - :name: #{library.name}
-          :url: #{library.url}
-      :default_type: #{default_type}
+      libraries:
+        - name: #{library.name}
+          url: #{library.url}
+      default_type: #{default_type}
       END
      }
     let(library) { Library.new("Alexandria Library", "http://alexandria.book") }
