@@ -1,5 +1,9 @@
 version: 1.0
 shards:
+  cossack:
+    github: greyblake/crystal-cossack
+    version: 0.1.4
+
   spec2:
     github: waterlink/spec2.cr
     version: 0.9.2
