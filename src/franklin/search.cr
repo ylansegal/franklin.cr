@@ -11,13 +11,14 @@ module Franklin
     def initialize(@library)
     end
 
-    def perform(search_term : String) : Hash(Item, Availability)
-      results_page = search_library(search_term)
+    def perform(search_term : String, connection = nil) : Hash(Item, Availability)
+      results_page = search_library(search_term, connection)
       results_json = extract_json(results_page)
       parse(results_json)
     end
 
-    private def search_library(search_terms : String)
+    private def search_library(search_terms : String, connection)
+      client.connection = connection if connection
       response = client.get(search_path(search_terms))
       doc = XML.parse(response.body)
     end
