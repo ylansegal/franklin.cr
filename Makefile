@@ -2,11 +2,12 @@ crystal ?= $(shell which crystal)
 bin_dir = bin
 doc_dir = doc
 executable = franklin
+entrypoint = src/cli.cr
 
 test: dependencies
 	$(crystal) spec
 build: bin_directory dependencies
-	$(crystal) build --release -o $(bin_dir)/$(executable) src/cli.cr $(CRFLAGS)
+	$(crystal) build --release -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
 bin_directory:
 	mkdir -p $(bin_dir)
 dependencies: shard.lock
