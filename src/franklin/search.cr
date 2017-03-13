@@ -1,4 +1,5 @@
-require "cossack"
+# require "cossack"
+require "http/client"
 require "xml"
 require "json"
 
@@ -11,15 +12,14 @@ module Franklin
     def initialize(@library)
     end
 
-    def perform(search_term : String, connection = nil) : Hash(Item, Availability)
-      results_page = search_library(search_term, connection)
+    def perform(search_term : String) : Hash(Item, Availability)
+      results_page = search_library(search_term)
       results_json = extract_json(results_page)
       parse(results_json)
     end
 
-    private def search_library(search_terms : String, connection)
-      client.connection = connection if connection
-      response = client.get(search_path(search_terms))
+    private def search_library(search_terms : String)
+      response = HTTP::Client.get("#{library.url}#{search_path(search_terms)}")
       doc = XML.parse(response.body)
     end
 
@@ -48,12 +48,6 @@ module Franklin
 
     def parse_availability(data)
       Availability.new(library, data["ownedCopies"].as_i, data["availableCopies"].as_i, data["holdsCount"].as_i)
-    end
-
-    private def client
-      @client ||= Cossack::Client.new(library.url) { |client|
-        client.use Cossack::RedirectionMiddleware
-      }
     end
 
     private def search_path(search_terms : String)
