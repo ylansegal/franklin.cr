@@ -16,7 +16,7 @@ describe Franklin do
       expect {
         Franklin.run("Seveneves",
                      config_path: example_config_path,
-                     type: nil,
+                     filter: nil,
                      io: IO::Memory.new,
                      connection: test_connection)
       }.not_to raise_error
