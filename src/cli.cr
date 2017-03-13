@@ -1,3 +1,3 @@
 require "./franklin"
 
-Franklin.run("hello, world", {} of Symbol => String)
+Franklin.run(ARGV.join, {} of Symbol => String)
