@@ -1,0 +1,6 @@
+---
+libraries:
+  - name: San Francisco Public Library
+    url: https://sfpl.overdrive.com
+  - name: San Diego Public Library
+    url: https://sdpl.overdrive.com
