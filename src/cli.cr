@@ -22,7 +22,7 @@ parser = OptionParser.parse! { |parser|
   end
 }
 
-Franklin.run(ARGV.join(" "), config_path: config_path, filter: filter_type)
+Franklin.run(search_terms: ARGV.join(" "), config_path: config_path, filter: filter_type)
 
 # begin
 #   Franklin.run(ARGV.join(" "), options)

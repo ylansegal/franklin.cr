@@ -14,7 +14,7 @@ describe Franklin do
 
     it "integrates end-to-end" do
       expect {
-        Franklin.run("Seveneves",
+        Franklin.run(search_terms: "Seveneves",
                      config_path: example_config_path,
                      filter: nil,
                      io: IO::Memory.new,
