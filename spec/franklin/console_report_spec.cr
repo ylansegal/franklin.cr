@@ -11,7 +11,7 @@ module Franklin
     let(:availability) { Availability.random_fixture }
     let(:availability_description) { AvailabilityDescription.new(availability).to_s }
 
-    describe ".print_to_out" do
+    describe ".to_s" do
       it "includes search_term" do
         expect(result).to match(/#{search_terms}/)
       end
