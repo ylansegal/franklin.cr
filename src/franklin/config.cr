@@ -7,7 +7,10 @@ module Franklin
 
     YAML.mapping(
       libraries: Array(Library),
-      default_type: String
+      default_type: {
+        type: String,
+        nilable: true
+      }
     )
 
     def self.from_file(file : String | Nil = nil)

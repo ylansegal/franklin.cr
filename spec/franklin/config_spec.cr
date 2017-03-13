@@ -25,5 +25,24 @@ module Franklin
         expect(subject.libraries).to eq([library])
       end
     end
+
+    context "YAML deserialization without default type" do
+      let(yaml) {
+        <<-END
+        ---
+        libraries:
+          - name: #{library.name}
+            url: #{library.url}
+        END
+       }
+
+      it "maps default_default" do
+        expect(subject.default_type).to eq(nil)
+      end
+
+      it "maps libraries" do
+        expect(subject.libraries).to eq([library])
+      end
+    end
   end
 end
