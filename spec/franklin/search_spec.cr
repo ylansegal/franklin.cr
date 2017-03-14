@@ -20,6 +20,19 @@ module Franklin
         expect(items.map(&.title).first).to match(/#{search_term}/)
         expect(items.map(&.author).first).to eq("Isaac Asimov")
       end
+
+      context "when a libarary contains an ending /" do
+        let(:url) { "https://alexandria.org/" }
+        let(:expected_url) { "https://alexandria.org/search?query=Prelude+to+Foundation" }
+        let(:library) { Library.new("Library Of Alexandria", url) }
+
+        it "properly sets the path for the URI" do
+          WebMock.stub(:get, expected_url)
+                 .to_return(status: 200, body: response_body)
+
+          expect { results }.not_to raise_error
+        end
+      end
     end
   end
 end

@@ -19,8 +19,15 @@ module Franklin
     end
 
     private def search_library(search_terms : String)
-      response = HTTP::Client.get("#{library.url}#{search_path(search_terms)}")
-      doc = XML.parse(response.body)
+      response = HTTP::Client.get(search_url(search_terms))
+      XML.parse(response.body)
+    end
+
+    private def search_url(search_terms)
+      URI.parse(library.url).tap { |uri|
+        uri.path = "/search"
+        uri.query = HTTP::Params.build { |params| params.add("query", search_terms) }
+      }
     end
 
     private def extract_json(result_page : XML::Node)
@@ -64,14 +71,6 @@ module Franklin
 
     private def json_to_i(json : Nil)
       0
-    end
-
-    private def search_path(search_terms : String)
-      params = HTTP::Params.build do |form|
-        form.add("query", search_terms)
-      end
-
-      "/search?#{params}"
     end
   end
 end
