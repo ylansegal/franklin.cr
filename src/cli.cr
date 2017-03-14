@@ -22,25 +22,23 @@ parser = OptionParser.parse! { |parser|
   end
 }
 
-Franklin.run(search_terms: ARGV.join(" "), config_path: config_path, filter: filter_type)
-
-# begin
-#   Franklin.run(ARGV.join(" "), options)
-# rescue ArgumentError => ex
-#   STDERR.puts <<-ERROR.gsub(/^  /, "")
-#   Oops! #{ex.message}
-#   #{parser}
-#   ERROR
-# rescue Errno::ENOENT
-#   STDERR.puts <<-ERROR.gsub(/^  /, "")
-#   Oops! It looks like you have not configured franklin
-#   Please add a configuration file in $HOME/.franklin that looks like this:
-#   ---
-#   libraries:
-#     - name: San Francisco Public Library
-#       url: http://sfpl.lib.overdrive.com
-#     - name: San Diego Public Library
-#       url: http://sdpl.lib.overdrive.com
-#   default_type: eBook # Optional, leave empty to search for all types
-#   ERROR
-# end
+begin
+  Franklin.run(search_terms: ARGV.join(" "), config_path: config_path, filter: filter_type)
+rescue ex : ArgumentError
+  STDERR.puts <<-ERROR
+  Oops! #{ex.message}
+  #{parser}
+  ERROR
+rescue Errno
+  STDERR.puts <<-ERROR
+  Oops! It looks like you have not configured franklin
+  Please add a configuration file in $HOME/.franklin that looks like this:
+  ---
+  libraries:
+    - name: San Francisco Public Library
+      url: http://sfpl.lib.overdrive.com
+    - name: San Diego Public Library
+      url: http://sdpl.lib.overdrive.com
+  default_type: eBook # Optional, leave empty to search for all types
+  ERROR
+end
