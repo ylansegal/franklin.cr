@@ -50,6 +50,8 @@ module Franklin
         result[item] = availability
       end
       result
+      rescue JSON::Error
+        parse(nil)
     end
   end
 
