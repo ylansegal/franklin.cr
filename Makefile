@@ -7,6 +7,8 @@ entrypoint = src/cli.cr
 test: dependencies
 	$(crystal) spec
 build: bin_directory dependencies
+	$(crystal) build -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
+build_for_release: bin_directory dependencies
 	$(crystal) build --release -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
 bin_directory:
 	mkdir -p $(bin_dir)
@@ -15,7 +17,7 @@ shard.lock: shard.yml
 	$(crystal) deps prune
 	$(crystal) deps
 	touch $@
-install: build
+install: build_for_release
 	cp $(bin_dir)/$(executable) /usr/local/bin/
 docs: build
 	$(crystal) docs
