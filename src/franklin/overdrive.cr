@@ -18,11 +18,11 @@ module Franklin
         holdsCount: { type: Int32, default: 0 }
       )
 
-      def to_item(id)
+      def to_item(id : String) : Item
         Franklin::Item.new(id, title, firstCreatorName, type.name)
       end
 
-      def to_availability(library)
+      def to_availability(library : Library) : Availability
         Franklin::Availability.new(library, ownedCopies, availableCopies, holdsCount)
       end
     end
