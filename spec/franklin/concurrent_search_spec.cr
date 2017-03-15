@@ -2,6 +2,8 @@ require "../spec_helper"
 
 module Franklin
   class TestSearcher
+    include SearchInterface
+
     def initialize(@library : Library, @results : Hash(Item, Availability))
     end
 
@@ -12,7 +14,7 @@ module Franklin
 
 
   describe ConcurrentSearch do
-    subject { ConcurrentSearch(TestSearcher).new(libraries) }
+    subject { ConcurrentSearch.new(libraries) }
     let(:libraries) { [library_1, library_2] }
     let(:library_1) { Library.random_fixture }
     let(:library_2) { Library.random_fixture }
@@ -40,8 +42,8 @@ module Franklin
       let(:search_terms) { "Harry Potter" }
       let(:searchers) {
         [
-          TestSearcher.new(library_1, search_results_1),
-          TestSearcher.new(library_2, search_results_2)
+          TestSearcher.new(library_1, search_results_1).as(SearchInterface),
+          TestSearcher.new(library_2, search_results_2).as(SearchInterface)
         ]
       }
       let(:results) { subject.perform(search_terms) }

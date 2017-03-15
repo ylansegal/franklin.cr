@@ -2,7 +2,14 @@ require "http/client"
 require "xml"
 
 module Franklin
+  module SearchInterface
+    abstract def perform(search_terms : String) : Hash(Item, Availability)
+  end
+
+
   class Search
+    include SearchInterface
+
     JS_VARIABLE = /window\.OverDrive\.mediaItems/
 
     property library : Library

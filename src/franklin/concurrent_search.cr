@@ -1,9 +1,9 @@
 module Franklin
-  class ConcurrentSearch(T)
-    property searchers : Array(Search) | Array(T)
+  class ConcurrentSearch
+    property searchers : Array(SearchInterface)
 
     def initialize(@libraries : Array(Library))
-      @searchers = @libraries.map { |library| Search.new(library) }
+      @searchers = @libraries.map { |library| Search.new(library).as(SearchInterface) }
     end
 
     def perform(search_terms : String) : Array(Hash(Item, Availability))
