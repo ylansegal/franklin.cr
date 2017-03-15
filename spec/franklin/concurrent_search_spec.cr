@@ -1,14 +1,16 @@
 require "../spec_helper"
 
 module Franklin
-  class TestSearcher
-    include SearchInterface
+  module Test
+    class Search
+      include SearchInterface
 
-    def initialize(@library : Library, @results : Hash(Item, Availability))
-    end
+      def initialize(@library : Library, @results : Hash(Item, Availability))
+      end
 
-    def perform(search_terms)
-      @results
+      def perform(search_terms)
+        @results
+      end
     end
   end
 
@@ -42,8 +44,8 @@ module Franklin
       let(:search_terms) { "Harry Potter" }
       let(:searchers) {
         [
-          TestSearcher.new(library_1, search_results_1).as(SearchInterface),
-          TestSearcher.new(library_2, search_results_2).as(SearchInterface)
+          Test::Search.new(library_1, search_results_1).as(SearchInterface),
+          Test::Search.new(library_2, search_results_2).as(SearchInterface)
         ]
       }
       let(:results) { subject.perform(search_terms) }
