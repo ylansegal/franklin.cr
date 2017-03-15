@@ -20,9 +20,9 @@ module Franklin
     end
 
     def perform(search_terms : String) : Hash(Item, Availability)
-      results_page = search_library(search_terms)
-      results_json = extract_json(results_page)
-      parse(results_json)
+      html = search_library(search_terms)
+      json_object = extract_json_object(html)
+      parse(json_object)
     end
 
     private def search_library(search_terms : String)
@@ -30,7 +30,7 @@ module Franklin
       XML.parse(response.body)
     end
 
-    private def extract_json(result_page : XML::Node)
+    private def extract_json_object(result_page : XML::Node)
       script_tag = result_page.xpath_nodes("//script").map(&.content).select { |n| n =~ JS_VARIABLE }.first
       var_assignment_line = script_tag.lines.find { |line| line =~ JS_VARIABLE }
       matches = var_assignment_line.scan(/{.*}/).[0]? if var_assignment_line
