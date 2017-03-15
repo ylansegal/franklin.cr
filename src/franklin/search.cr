@@ -24,7 +24,7 @@ module Franklin
       parse(json_object)
     end
 
-    private def search_library(search_terms : String)
+    private def search_library(search_terms : String) : XML::Node
       response = HTTP::Client.get(search_url(search_terms))
       XML.parse(response.body)
     end
