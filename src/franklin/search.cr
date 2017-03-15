@@ -43,26 +43,23 @@ module Franklin
     end
 
     private def parse(raw_data : String)
-      result = {} of Item => Availability
-      Overdrive::Data.from_json(raw_data).data.each do |id, oitem|
-        item = Franklin::Item.new(id, oitem.title, oitem.firstCreatorName, oitem.type.name)
-        availability = Franklin::Availability.new(library, oitem.ownedCopies, oitem.availableCopies, oitem.holdsCount)
-        result[item] = availability
+      data = Overdrive::Data.from_json(raw_data).data
+      data.each_with_object(result = {} of Item => Availability) do |(id, entry), result|
+        result[entry.to_item(id)] = entry.to_availability(library)
       end
-      result
-      rescue JSON::Error
-        parse(nil)
+    rescue JSON::Error
+      parse(nil)
     end
   end
 
   module Overdrive
     struct Data
       JSON.mapping(
-        data: Hash(String, Overdrive::Item)
+        data: Hash(String, Overdrive::Entry)
       )
     end
 
-    struct Item
+    struct Entry
       JSON.mapping(
         title: String,
         firstCreatorName: String,
@@ -71,6 +68,14 @@ module Franklin
         availableCopies: { type: Int32, default: 0 },
         holdsCount: { type: Int32, default: 0 }
       )
+
+      def to_item(id)
+        Franklin::Item.new(id, title, firstCreatorName, type.name)
+      end
+
+      def to_availability(library)
+        Franklin::Availability.new(library, ownedCopies, availableCopies, holdsCount)
+      end
     end
 
     struct Type
