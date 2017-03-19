@@ -10,6 +10,8 @@ build: bin_directory dependencies
 	$(crystal) build -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
 build_for_release: bin_directory dependencies
 	$(crystal) build --release -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
+	$(eval version := $(shell $(bin_dir)/$(executable) --help | grep 'Franklin v' | cut -d 'v' -f2))
+	zip $(bin_dir)/$(executable)-$(version).zip $(bin_dir)/$(executable)
 bin_directory:
 	mkdir -p $(bin_dir)
 dependencies: shard.lock
