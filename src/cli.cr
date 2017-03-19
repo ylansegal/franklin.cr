@@ -28,6 +28,7 @@ rescue ex : ArgumentError
   STDERR.puts <<-ERROR
   Oops! #{ex.message}
   #{parser}
+  Franklin v#{Franklin::VERSION}
   ERROR
 rescue Errno
   STDERR.puts <<-ERROR
