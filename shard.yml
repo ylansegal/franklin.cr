@@ -6,6 +6,10 @@ authors:
 
 license: MIT
 
+targets:
+  cli:
+    main: src/cli.cr
+
 development_dependencies:
   spec2:
     github: waterlink/spec2.cr
