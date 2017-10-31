@@ -23,11 +23,11 @@ module Franklin
           end
         end
 
-        context "when wait_list_size is not reported" do
+        context "when wait_list_size is 0" do
           let(:availability) { Availability.new(library, 4, 0, 0) }
 
-          it "describes unkown people per copy" do
-            expect(result).to eq("Unknown people/copy @ #{availability.library.name}")
+          it "describes the people per copy" do
+            expect(result).to eq("0.0 people/copy @ #{availability.library.name}")
           end
         end
       end

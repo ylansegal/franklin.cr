@@ -18,7 +18,7 @@ module Franklin
     end
 
     private def copies_per_person
-      wait_list? ? (wait_list_size.to_f / total_copies.to_f).round(1) : "Unknown"
+      (wait_list_size.to_f / total_copies.to_f).round(1)
     end
 
     private def wait_list?
