@@ -26,6 +26,8 @@ To build a binary:
 $ make build_for_release
 ```
 
+**Note**: If you are using a Mac and homebrew, and you are getting errors related to `libssl`, it's likely that you need to set an environment variable to let crystal know where `openssl` is located. See [crystal-lang issue #4745](https://github.com/crystal-lang/crystal/issues/4745) for more information.
+
 ## Configuration
 
 Franklin needs to be configured with information about the Overdrive libraries it will search. It expects a file in YAML format to exist in your home directory called `.franklin`. The contents of the file should look like:
