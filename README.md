@@ -2,13 +2,29 @@
 
 Franklin is a command line utility, written in crystal, that allows searching public libraries powered by Overdrive. It supports multiple library searching for those that have accounts in more than one library (city, county, state, etc.)
 
-I previously wrote a version of this library [in ruby][https://github.com/ylansegal/franklin]
-
-Currently, it's not in working condition yet.
+I previously wrote a version of this library [in ruby][https://github.com/ylansegal/franklin].
 
 ## Installation
 
-TODO: Write installation instructions here
+In order to use, this program must be compiled from source. A working `crystal` compiler with version `0.23.1` or above is needed.
+
+To install, clone this git repo:
+
+```shell
+$ git clone git@github.com:ylansegal/franklin.cr.git
+```
+
+Run tests:
+
+```shell
+$ make test
+```
+
+To build a binary:
+
+```shell
+$ make build_for_release
+```
 
 ## Configuration
 
@@ -31,7 +47,7 @@ There needs to be a minimum of one library, but there is no maximum. The `name` 
 Once the library has been installed and configured, the `franklin` executable will be available. It can be called from the command line with the list of terms to be searched for:
 
 ```
-$ franklin chamber of secrets
+$ bin/franklin chamber of secrets
 Searched for: chamber of secrets
 ======================================================
 Harry Potter and the Chamber of Secrets
@@ -75,10 +91,6 @@ Availability:
 Franklin supports using a different path for the configuration file and filtering results by type (ie,  eBook, Audiobook, etc).
 
 See `franklin --help` for more information.
-
-## Development
-
-TODO: Write development instructions here
 
 ## Contributing
 
