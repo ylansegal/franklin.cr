@@ -6,7 +6,7 @@ module Franklin
     end
 
     def perform(results : Hash(Item, Array(Availability))) : Hash(Item, Array(Availability))
-      filter(results, type  )
+      filter(results, type)
     end
 
     private def filter(results, type : Nil)
