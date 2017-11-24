@@ -14,7 +14,6 @@ module Franklin
     end
   end
 
-
   describe ConcurrentSearch do
     subject { ConcurrentSearch.new(libraries) }
     let(:libraries) { [library_1, library_2] }
@@ -25,13 +24,13 @@ module Franklin
       let(:search_results_1) {
         {
           item_1 => availability_1,
-          item_2 => availability_2
+          item_2 => availability_2,
         }
       }
       let(:search_results_2) {
         {
           item_2 => availability_3,
-          item_3 => availability_4
+          item_3 => availability_4,
         }
       }
       let(:item_1) { Item.random_fixture }
@@ -45,7 +44,7 @@ module Franklin
       let(:searchers) {
         [
           Test::Search.new(library_1, search_results_1).as(SearchInterface),
-          Test::Search.new(library_2, search_results_2).as(SearchInterface)
+          Test::Search.new(library_2, search_results_2).as(SearchInterface),
         ]
       }
       let(:results) { subject.perform(search_terms) }

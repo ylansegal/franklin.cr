@@ -4,7 +4,7 @@ module Franklin
   describe ConsoleReport do
     subject { ConsoleReport.new(search_terms, collated_results) }
     let(:search_terms) { "crime and punishment" }
-    let(:collated_results) { { item => [availability] } }
+    let(:collated_results) { {item => [availability]} }
     let(:result) { subject.to_s(io).to_s }
     let(:io) { IO::Memory.new }
     let(:item) { Item.random_fixture }

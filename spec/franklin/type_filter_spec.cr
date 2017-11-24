@@ -6,7 +6,7 @@ module Franklin
     let(:results) {
       {
         item_1 => [availability_1],
-        item_2 => [availability_2]
+        item_2 => [availability_2],
       }
     }
     let(:item_1) { Item.random_fixture(item_type) }
@@ -18,14 +18,14 @@ module Franklin
     let(:filtered_results) { subject.perform(results) }
 
     it "filters results for a given type" do
-      expect(filtered_results).to eq({ item_1 => [availability_1] })
+      expect(filtered_results).to eq({item_1 => [availability_1]})
     end
 
     context "when type is in different case" do
       let(:type) { "HoLoBOOK" }
 
       it "filters results" do
-        expect(filtered_results).to eq({ item_1 => [availability_1] })
+        expect(filtered_results).to eq({item_1 => [availability_1]})
       end
     end
 

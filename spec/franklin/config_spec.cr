@@ -12,7 +12,7 @@ module Franklin
           url: #{library.url}
       default_type: #{default_type}
       END
-     }
+    }
     let(library) { Library.new("Alexandria Library", "http://alexandria.book") }
     let(default_type) { "eBook" }
 
@@ -34,7 +34,7 @@ module Franklin
           - name: #{library.name}
             url: #{library.url}
         END
-       }
+      }
 
       it "maps default_default" do
         expect(subject.default_type).to eq(nil)

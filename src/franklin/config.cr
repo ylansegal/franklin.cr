@@ -8,8 +8,8 @@ module Franklin
     YAML.mapping(
       libraries: Array(Library),
       default_type: {
-        type: String,
-        nilable: true
+        type:    String,
+        nilable: true,
       }
     )
 

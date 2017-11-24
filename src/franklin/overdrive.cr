@@ -13,9 +13,9 @@ module Franklin
         title: String,
         firstCreatorName: String,
         type: Type,
-        ownedCopies: { type: Int32, default: 0 },
-        availableCopies: { type: Int32, default: 0 },
-        holdsCount: { type: Int32, default: 0 }
+        ownedCopies: {type: Int32, default: 0},
+        availableCopies: {type: Int32, default: 0},
+        holdsCount: {type: Int32, default: 0}
       )
 
       def to_item(id : String) : Item

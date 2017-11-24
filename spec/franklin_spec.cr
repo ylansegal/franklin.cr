@@ -16,12 +16,11 @@ describe Franklin do
       WebMock.stub(:get, "https://sdpl.overdrive.com/search?query=Seveneves")
              .to_return(body: response_body)
 
-
       expect {
         Franklin.run(search_terms: "Seveneves",
-                     config_path: example_config_path,
-                     filter: nil,
-                     io: IO::Memory.new)
+          config_path: example_config_path,
+          filter: nil,
+          io: IO::Memory.new)
       }.not_to raise_error
     end
   end

@@ -6,7 +6,6 @@ module Franklin
     abstract def perform(search_terms : String) : Hash(Item, Availability)
   end
 
-
   class Search
     include SearchInterface
 
