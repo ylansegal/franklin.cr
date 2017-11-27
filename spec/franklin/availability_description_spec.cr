@@ -2,9 +2,11 @@ require "../spec_helper"
 
 module Franklin
   describe AvailabilityDescription do
+    let(:library) { Library.fixture }
+    let(:item) { Item.random_fixture }
+
     describe "#to_s" do
-      let(:result) { AvailabilityDescription.new(availability).to_s }
-      let(:library) { Library.fixture }
+      let(:result) { AvailabilityDescription.new(availability, item).to_s }
 
       context "when available_copies is greater 0" do
         let(:availability) { Availability.new(library, 10, 2, 0) }
@@ -30,6 +32,15 @@ module Franklin
             expect(result).to eq("0.0 people/copy @ #{availability.library.name}")
           end
         end
+      end
+    end
+
+    describe "#url" do
+      let(:url) { AvailabilityDescription.new(availability, item).url }
+      let(:availability) { Availability.new(library, 4, 0, 13) }
+
+      it "returns a url for the given availability" do
+        expect(url).to eq("#{library.url}/media/#{item.id}")
       end
     end
   end

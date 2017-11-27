@@ -1,12 +1,16 @@
 module Franklin
   class AvailabilityDescription
-    def initialize(@availability : Availability)
+    def initialize(@availability : Availability, @item : Item)
     end
 
     forward_missing_to @availability
 
     def to_s
       "#{copies_information} @ #{library.name}"
+    end
+
+    def url
+      "#{library.url}/media/#{@item.id}"
     end
 
     private def copies_information

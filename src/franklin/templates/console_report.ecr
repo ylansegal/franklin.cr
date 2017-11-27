@@ -5,7 +5,8 @@ Searched for: <%= @search_terms %>
 By <%= item.author %>
 Format: <%= item.format %>
 Availability:
-<% availabilities.each do |availability| -%>
-  <%= AvailabilityDescription.new(availability).to_s %>
+<% availabilities.map {|a| AvailabilityDescription.new(a, item) }.each do |availability| -%>
+  <%= availability.to_s %>
+    <%= availability.url %>
 <% end -%>
 <% end -%>

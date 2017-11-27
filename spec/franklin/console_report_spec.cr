@@ -9,7 +9,7 @@ module Franklin
     let(:io) { IO::Memory.new }
     let(:item) { Item.random_fixture }
     let(:availability) { Availability.random_fixture }
-    let(:availability_description) { AvailabilityDescription.new(availability).to_s }
+    let(:availability_description) { AvailabilityDescription.new(availability, item) }
 
     describe ".to_s" do
       it "includes search_term" do
@@ -24,7 +24,8 @@ module Franklin
 
       it "includes availability information" do
         expect(result).to match(/^Availability:/m)
-        expect(result).to match(/^  #{availability_description}/m)
+        expect(result).to match(/^  #{availability_description.to_s}/m)
+        expect(result).to match(/^    #{availability_description.url}/m)
       end
     end
   end
