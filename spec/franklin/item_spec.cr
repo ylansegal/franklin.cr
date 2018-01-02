@@ -1,10 +1,10 @@
 require "../spec_helper"
-require "secure_random"
+require "random/secure"
 
 module Franklin
   describe Item do
     subject { Item.new(id, title, author, format) }
-    let(:id) { SecureRandom.uuid }
+    let(:id) { Random::Secure.hex }
     let(:title) { "Ender's Game" }
     let(:author) { "Orson Scott Card" }
     let(:format) { "eBook" }
@@ -26,7 +26,7 @@ module Franklin
     end
 
     it "can be compared to other items by value" do
-      expect(subject).not_to eq(described_class.new(SecureRandom.uuid, title, author, format))
+      expect(subject).not_to eq(described_class.new(Random::Secure.hex, title, author, format))
       expect(subject).to eq(described_class.new(id, title, author, format))
     end
   end

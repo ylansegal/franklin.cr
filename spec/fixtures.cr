@@ -1,4 +1,4 @@
-require "secure_random"
+require "random/secure"
 
 module Franklin
   struct Library
@@ -7,13 +7,13 @@ module Franklin
     end
 
     def self.random_fixture
-      new(SecureRandom.hex, "http://#{SecureRandom.hex}.com")
+      new(Random::Secure.hex, "http://#{Random::Secure.hex}.com")
     end
   end
 
   struct Item
     def self.random_fixture(type = "eBook")
-      new(SecureRandom.uuid, SecureRandom.hex, SecureRandom.hex, type)
+      new(Random::Secure.hex, Random::Secure.hex, Random::Secure.hex, type)
     end
   end
 
