@@ -1,3 +1,5 @@
+require "uri"
+
 module Franklin
   class AvailabilityDescription
     def initialize(@availability : Availability, @item : Item)
@@ -10,7 +12,9 @@ module Franklin
     end
 
     def url
-      "#{library.url}/media/#{@item.id}"
+      URI.parse(library.url).tap { |uri|
+        uri.path = "/media/#{@item.id}"
+      }.to_s
     end
 
     private def copies_information

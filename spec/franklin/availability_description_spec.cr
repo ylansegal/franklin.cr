@@ -42,6 +42,15 @@ module Franklin
       it "returns a url for the given availability" do
         expect(url).to eq("#{library.url}/media/#{item.id}")
       end
+
+      context "when the library url has an ending /" do
+        let(:base_url) { "http://library.com" }
+        let(:library) { Library.new("Some library", "#{base_url}/") }
+
+        it "correctly formats the url" do
+          expect(url).to eq("#{base_url}/media/#{item.id}")
+        end
+      end
     end
   end
 end
