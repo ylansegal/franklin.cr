@@ -31,10 +31,6 @@ module Franklin
           item_3 => [availability_4],
         })
       end
-
-      # it "dd" do
-      #   puts [search_results_1, search_results_2].map { |result| result[item_1]? }
-      # end
     end
   end
 end
