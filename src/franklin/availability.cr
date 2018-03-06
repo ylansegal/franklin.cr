@@ -7,5 +7,9 @@ module Franklin
 
     def initialize(@library, @total_copies, @available_copies, @wait_list_size)
     end
+
+    def persons_per_copy
+      (wait_list_size.to_f / total_copies.to_f).round(1)
+    end
   end
 end

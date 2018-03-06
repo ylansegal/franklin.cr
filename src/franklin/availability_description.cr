@@ -18,15 +18,11 @@ module Franklin
     end
 
     private def copies_information
-      available? ? "Available" : "#{copies_per_person} people/copy"
+      available? ? "Available" : "#{persons_per_copy} people/copy"
     end
 
     private def available?
       available_copies > 0
-    end
-
-    private def copies_per_person
-      (wait_list_size.to_f / total_copies.to_f).round(1)
     end
 
     private def wait_list?

@@ -18,8 +18,8 @@ module Franklin
   end
 
   struct Availability
-    def self.random_fixture
-      new(Library.random_fixture, rand(20), rand(15), 0)
+    def self.random_fixture(available_copies = rand(15))
+      new(Library.random_fixture, rand(20), available_copies, 0)
     end
   end
 end
