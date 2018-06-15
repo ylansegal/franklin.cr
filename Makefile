@@ -1,4 +1,5 @@
 crystal ?= $(shell which crystal)
+shards ?= $(shell which shards)
 bin_dir = bin
 doc_dir = doc
 executable = franklin
@@ -16,8 +17,8 @@ bin_directory:
 	mkdir -p $(bin_dir)
 dependencies: shard.lock
 shard.lock: shard.yml
-	$(crystal) deps prune
-	$(crystal) deps
+	$(shards) prune
+	$(shards) install
 	touch $@
 install: build_for_release
 	cp $(bin_dir)/$(executable) /usr/local/bin/
