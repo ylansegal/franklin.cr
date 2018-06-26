@@ -30,7 +30,7 @@ module Franklin
     end
 
     private def search_library(search_terms : String) : XML::Node
-      response = HTTP::Client.get(search_url(search_terms))
+      response = HTTP::Client.get(search_url(search_terms), HTTP::Headers{"Cookie" => "hideLibbyIntercept=1"})
       XML.parse(response.body)
     end
 
