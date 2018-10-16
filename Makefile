@@ -7,10 +7,9 @@ entrypoint = src/cli.cr
 
 test: shard.lock
 	$(crystal) spec
-bin/franklin: bin shard.lock
+bin/franklin: bin shard.lock src/**/*.cr
+	# $(crystal) build --release -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
 	$(crystal) build -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
-build_for_release: bin shard.lock
-	$(crystal) build --release -o $(bin_dir)/$(executable) $(entrypoint) $(CRFLAGS)
 	$(eval version := $(shell $(bin_dir)/$(executable) --help | grep 'Franklin v' | cut -d 'v' -f2))
 	zip $(bin_dir)/$(executable)-$(version).zip $(bin_dir)/$(executable)
 bin:
@@ -23,7 +22,7 @@ install: bin/franklin
 	cp $(bin_dir)/$(executable) /usr/local/bin/
 docs: bin/franklin
 	$(crystal) docs
-
-.PHONY : clean install
 clean :
 	-rm -rf $(bin_dir) $(doc_dir)
+
+.PHONY : clean install
