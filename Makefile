@@ -6,6 +6,8 @@ executable = franklin
 entrypoint = src/cli.cr
 
 
+test: shard.lock
+	$(crystal) spec
 clean:
 	-rm -rf $(bin_dir) $(doc_dir)
 zip: bin/franklin
@@ -22,8 +24,6 @@ shard.lock: shard.yml
 	$(shards) install
 	touch $@
 docs: bin/franklin
-	$(crystal) docs
-test: shard.lock
-	$(crystal) spec
+	$(crystal) docs\
 
 .PHONY : clean install zip
