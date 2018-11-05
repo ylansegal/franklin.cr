@@ -2,30 +2,31 @@ require "../spec_helper"
 
 module Franklin
   describe ConsoleReport do
-    subject { ConsoleReport.new(search_terms, collated_results) }
-    let(:search_terms) { "crime and punishment" }
-    let(:collated_results) { {item => [availability]} }
-    let(:result) { subject.to_s(io).to_s }
-    let(:io) { IO::Memory.new }
-    let(:item) { Item.random_fixture }
-    let(:availability) { Availability.random_fixture }
-    let(:availability_description) { AvailabilityDescription.new(availability, item) }
+    availability =  Availability.random_fixture
+    item =  Item.random_fixture
+    collated_results =  {item => [availability]}
+    search_terms =  "crime and punishment"
+    io =  IO::Memory.new
+    subject = ConsoleReport.new(search_terms, collated_results)
+    result =  subject.to_s(io).to_s
+
+    availability_description =  AvailabilityDescription.new(availability, item)
 
     describe ".to_s" do
       it "includes search_term" do
-        expect(result).to match(/#{search_terms}/)
+        result.should match(/#{search_terms}/)
       end
 
       it "includes item information" do
-        expect(result).to match(/^#{item.title}/m)
-        expect(result).to match(/^By #{item.author}/m)
-        expect(result).to match(/^Format: #{item.format}/m)
+        result.should match(/^#{item.title}/m)
+        result.should match(/^By #{item.author}/m)
+        result.should match(/^Format: #{item.format}/m)
       end
 
       it "includes availability information" do
-        expect(result).to match(/^Availability:/m)
-        expect(result).to match(/^  #{availability_description.to_s}/m)
-        expect(result).to match(/^    #{availability_description.url}/m)
+        result.should match(/^Availability:/m)
+        result.should match(/^  #{availability_description.to_s}/m)
+        result.should match(/^    #{availability_description.url}/m)
       end
     end
   end
