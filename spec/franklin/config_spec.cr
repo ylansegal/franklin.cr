@@ -3,45 +3,46 @@ require "yaml"
 
 module Franklin
   describe Config do
-    subject { Config.from_yaml(yaml) }
-    let(yaml) {
-      <<-END
+    library =  Library.new("Alexandria Library", "http://alexandria.book")
+    default_type =  "eBook"
+    yaml = <<-END
       ---
       libraries:
         - name: #{library.name}
           url: #{library.url}
       default_type: #{default_type}
       END
-    }
-    let(library) { Library.new("Alexandria Library", "http://alexandria.book") }
-    let(default_type) { "eBook" }
+
+    subject = Config.from_yaml(yaml)
 
     context "YAML deserilization" do
       it "maps default_type" do
-        expect(subject.default_type).to eq(default_type)
+        subject.default_type.should eq(default_type)
       end
 
       it "maps libraries" do
-        expect(subject.libraries).to eq([library])
+        subject.libraries.should eq([library])
       end
     end
 
     context "YAML deserialization without default type" do
-      let(yaml) {
-        <<-END
+      yaml = <<-END
         ---
         libraries:
           - name: #{library.name}
             url: #{library.url}
         END
-      }
 
       it "maps default_default" do
-        expect(subject.default_type).to eq(nil)
+        subject = Config.from_yaml(yaml)
+
+        subject.default_type.should eq(nil)
       end
 
       it "maps libraries" do
-        expect(subject.libraries).to eq([library])
+        subject = Config.from_yaml(yaml)
+
+        subject.libraries.should eq([library])
       end
     end
   end
