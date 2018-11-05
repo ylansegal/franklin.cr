@@ -14,7 +14,7 @@ module Franklin
     end
 
     private def filter(results, type : String)
-      results.select { |item, _| item.format.compare(type, case_insensitive: false) == 0 }
+      results.select { |item, _| item.format.compare(type, case_insensitive: true) == 0 }
     end
   end
 end
