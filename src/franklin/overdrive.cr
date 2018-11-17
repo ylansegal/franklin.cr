@@ -14,7 +14,7 @@ module Franklin
         firstCreatorName: String,
         type: Type,
         ownedCopies: {type: Int32, default: 0},
-        availableCopies: {type: Int32, default: 0},
+        availableCopies: {type: Int32, default: 1},
         holdsCount: {type: Int32, default: 0}
       )
 
