@@ -36,9 +36,9 @@ Franklin needs to be configured with information about the Overdrive libraries i
 ---
 libraries:
   - name: San Francisco Public Library
-    url: http://sfpl.lib.overdrive.com
-  - name: San Diego Public Library
-    url: http://sdpl.lib.overdrive.com
+    url: https://sfpl.overdrive.com
+  - name: San Diego County Library
+    url: https://sdcl.overdrive.com
 default_type: eBook # Optional, will show all types if not set.
 ```
 

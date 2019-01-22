@@ -37,9 +37,9 @@ rescue Errno
   ---
   libraries:
     - name: San Francisco Public Library
-      url: http://sfpl.lib.overdrive.com
-    - name: San Diego Public Library
-      url: http://sdpl.lib.overdrive.com
+      url: https://sfpl.overdrive.com
+    - name: San Diego County Library
+      url: https://sdcl.overdrive.com
   default_type: eBook # Optional, leave empty to search for all types
   ERROR
 end
