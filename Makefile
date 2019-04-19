@@ -7,7 +7,7 @@ entrypoint = src/cli.cr
 
 
 test: shard.lock
-	$(crystal) spec
+	$(crystal) spec --warnings all --error-on-warnings
 clean:
 	-rm -rf $(bin_dir) $(doc_dir)
 zip: bin/franklin
