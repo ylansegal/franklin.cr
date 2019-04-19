@@ -8,7 +8,8 @@ module Franklin
     search_terms =  "crime and punishment"
     io =  IO::Memory.new
     subject = ConsoleReport.new(search_terms, collated_results)
-    result =  subject.to_s(io).to_s
+    subject.to_s(io)
+    result = io.to_s
 
     availability_description =  AvailabilityDescription.new(availability, item)
 
