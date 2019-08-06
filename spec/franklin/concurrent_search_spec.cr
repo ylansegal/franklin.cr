@@ -8,7 +8,7 @@ module Franklin
       def initialize(@library : Library, @results : Hash(Item, Availability))
       end
 
-      def perform(search_terms)
+      def perform(search_terms) : Hash(Item, Availability)
         @results
       end
     end
