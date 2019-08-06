@@ -1,5 +1,5 @@
 name: franklin
-version: 0.3.3
+version: 0.3.7
 
 authors:
   - Ylan Segal <ylan@segal-family.com>
@@ -15,4 +15,4 @@ development_dependencies:
     github: manastech/webmock.cr
     version: ~> 0.9
 
-crystal: 0.29.0
+crystal: 0.30.0
