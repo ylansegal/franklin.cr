@@ -13,7 +13,7 @@ module Franklin
         title: String,
         firstCreatorName: String,
         type: Type,
-        ownedCopies: {type: Int32, default: 0},
+        ownedCopies: {type: Int32, default: 1},
         availableCopies: {type: Int32, default: 1},
         holdsCount: {type: Int32, default: 0}
       )
