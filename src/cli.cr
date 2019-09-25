@@ -4,7 +4,7 @@ require "option_parser"
 config_path = Franklin::Config::DEFAULT_FILE_LOCATION
 filter_type = nil
 
-parser = OptionParser.parse! { |parser|
+parser = OptionParser.parse { |parser|
   parser.banner = "Usage: frankling [options] search_term1 search_term2..."
 
   parser.on("-h", "--help", "Prints this help") do

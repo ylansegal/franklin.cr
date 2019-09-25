@@ -16,7 +16,7 @@ install: /usr/local/bin/franklin
 /usr/local/bin/franklin: bin/franklin
 	cp bin/franklin  /usr/local/bin/
 
-bin/franklin: bin shard.lock src/**/*.cr
+bin/franklin: bin shard.lock src/*.cr src/**/*.cr
 	$(crystal) build --release --no-debug -o bin/franklin  src/cli.cr $(CRFLAGS)
 
 bin:

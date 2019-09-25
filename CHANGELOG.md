@@ -1,3 +1,6 @@
+# 0.3.9
+- Make code compatible with crystal 0.31.0
+
 # 0.3.6
 - Make code compatible with crystal 0.28.0
 

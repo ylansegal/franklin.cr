@@ -15,4 +15,4 @@ development_dependencies:
     github: manastech/webmock.cr
     version: ~> 0.9
 
-crystal: 0.30.1
+crystal: 0.31.0

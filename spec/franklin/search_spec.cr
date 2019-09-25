@@ -2,16 +2,19 @@ require "../spec_helper"
 
 module Franklin
   describe Search do
-    library = Library.fixture
-    subject = Search.new(library)
-    search_terms = "Prelude to Foundation"
+    # library = Library.fixture
+    # subject = Search.new(library)
+    # search_terms = "Prelude to Foundation"
 
     context "#perform" do
       # These results where known to be accurate when this test was recorded.
       # To update test, modify the contents of spec/*_search.html
-      response_body = File.read("spec/prelude_to_foundation_search.html")
-
       it "returns expected results" do
+        library = Library.fixture
+        subject = Search.new(library)
+        search_terms = "Prelude to Foundation"
+
+        response_body = File.read("spec/prelude_to_foundation_search.html")
         WebMock.reset
         WebMock.stub(:get, "#{library.url}/search?query=Prelude+to+Foundation")
                .to_return(status: 200, body: response_body)
@@ -26,9 +29,11 @@ module Franklin
       end
 
       context "when unreadable json is returned from server" do
-        response_body = File.read("spec/bad_search.html")
-
         it "returns empty results" do
+          library = Library.fixture
+          subject = Search.new(library)
+          search_terms = "Prelude to Foundation"
+          response_body = File.read("spec/bad_search.html")
           WebMock.reset
           WebMock.stub(:get, "#{library.url}/search?query=Prelude+to+Foundation")
                  .to_return(status: 200, body: response_body)
@@ -40,11 +45,17 @@ module Franklin
 
     context "search_url" do
       it "appends the search path and query" do
+        library = Library.fixture
+        subject = Search.new(library)
+        search_terms = "Prelude to Foundation"
         search_url = subject.search_url(search_terms)
         search_url.should eq("#{library.url}/search?query=Prelude+to+Foundation")
       end
 
       context "when a libarary contains an ending /" do
+        library = Library.fixture
+        subject = Search.new(library)
+        search_terms = "Prelude to Foundation"
         url = "https://alexandria.org/"
         expected_url = "https://alexandria.org/search?query=Prelude+to+Foundation"
         library = Library.new("Library Of Alexandria", url)
