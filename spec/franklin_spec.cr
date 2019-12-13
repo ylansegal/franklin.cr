@@ -6,8 +6,6 @@ describe Franklin do
   end
 
   describe ".run" do
-
-
     it "integrates end-to-end" do
       example_config_path = File.join(__DIR__, "example_franklin_config.yml")
       response_body = File.read("spec/seveneves_search.html")
