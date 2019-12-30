@@ -31,7 +31,7 @@ module Franklin
     context "when the type is nil" do
       it "returns unmodified results" do
         type = nil
-        item_type =  "VCR_Tape"
+        item_type = "VCR_Tape"
         subject = TypeFilter.new(type)
 
         subject.perform(results).should eq(results)

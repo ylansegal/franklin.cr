@@ -12,9 +12,9 @@ describe Franklin do
 
       # Recorded search, replayed to avoid network traffic in testing
       WebMock.stub(:get, "https://sfpl.overdrive.com/search?query=Seveneves")
-             .to_return(body: response_body)
+        .to_return(body: response_body)
       WebMock.stub(:get, "https://sdpl.overdrive.com/search?query=Seveneves")
-             .to_return(body: response_body)
+        .to_return(body: response_body)
 
       Franklin.run(search_terms: "Seveneves",
         config_path: example_config_path,

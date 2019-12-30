@@ -20,7 +20,6 @@ module Franklin
     libraries = [library_1, library_2]
     subject = ConcurrentSearch.new(libraries)
 
-
     describe "#perform" do
       item_1 = Item.random_fixture
       item_2 = Item.random_fixture
@@ -30,19 +29,19 @@ module Franklin
       availability_3 = Availability.random_fixture
       availability_4 = Availability.random_fixture
       search_results_1 = {
-          item_1 => availability_1,
-          item_2 => availability_2,
-        }
+        item_1 => availability_1,
+        item_2 => availability_2,
+      }
       search_results_2 = {
-          item_2 => availability_3,
-          item_3 => availability_4,
-        }
+        item_2 => availability_3,
+        item_3 => availability_4,
+      }
 
       search_terms = "Harry Potter"
       searchers = [
-          Test::Search.new(library_1, search_results_1).as(SearchInterface),
-          Test::Search.new(library_2, search_results_2).as(SearchInterface),
-        ]
+        Test::Search.new(library_1, search_results_1).as(SearchInterface),
+        Test::Search.new(library_2, search_results_2).as(SearchInterface),
+      ]
 
       subject.searchers = searchers
       results = subject.perform(search_terms)
@@ -52,7 +51,6 @@ module Franklin
       end
 
       context "when no search term is provided" do
-
         it "raises an ArgumentError" do
           expect_raises(ArgumentError) do
             subject.perform("")

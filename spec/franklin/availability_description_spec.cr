@@ -27,7 +27,6 @@ module Franklin
         end
 
         context "when wait_list_size is 0" do
-
           it "describes the people per copy" do
             availability = Availability.new(library, 4, 0, 0)
             result = AvailabilityDescription.new(availability, item).to_s

@@ -3,8 +3,8 @@ require "yaml"
 
 module Franklin
   describe Config do
-    library =  Library.new("Alexandria Library", "http://alexandria.book")
-    default_type =  "eBook"
+    library = Library.new("Alexandria Library", "http://alexandria.book")
+    default_type = "eBook"
     yaml = <<-END
       ---
       libraries:

@@ -2,16 +2,16 @@ require "../spec_helper"
 
 module Franklin
   describe ConsoleReport do
-    availability =  Availability.random_fixture
-    item =  Item.random_fixture
-    collated_results =  {item => [availability]}
-    search_terms =  "crime and punishment"
-    io =  IO::Memory.new
+    availability = Availability.random_fixture
+    item = Item.random_fixture
+    collated_results = {item => [availability]}
+    search_terms = "crime and punishment"
+    io = IO::Memory.new
     subject = ConsoleReport.new(search_terms, collated_results)
     subject.to_s(io)
     result = io.to_s
 
-    availability_description =  AvailabilityDescription.new(availability, item)
+    availability_description = AvailabilityDescription.new(availability, item)
 
     describe ".to_s" do
       it "includes search_term" do

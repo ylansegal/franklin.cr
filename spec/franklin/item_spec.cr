@@ -25,7 +25,6 @@ module Franklin
       id = Random::Secure.hex
       subject = Item.new(id, title, author, format)
 
-
       subject.author.should eq(author)
     end
 

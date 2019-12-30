@@ -17,11 +17,10 @@ module Franklin
         response_body = File.read("spec/prelude_to_foundation_search.html")
         WebMock.reset
         WebMock.stub(:get, "#{library.url}/search?query=Prelude+to+Foundation")
-               .to_return(status: 200, body: response_body)
+          .to_return(status: 200, body: response_body)
 
         results = subject.perform(search_terms)
         items = results.keys
-
 
         items.map(&.format).sort.should eq(["eBook", "Audiobook"].sort)
         items.map(&.title).first.should match(/#{search_terms}/)
@@ -36,7 +35,7 @@ module Franklin
           response_body = File.read("spec/bad_search.html")
           WebMock.reset
           WebMock.stub(:get, "#{library.url}/search?query=Prelude+to+Foundation")
-                 .to_return(status: 200, body: response_body)
+            .to_return(status: 200, body: response_body)
 
           subject.perform(search_terms).empty?.should be_true
         end
