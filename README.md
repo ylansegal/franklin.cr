@@ -2,7 +2,7 @@
 
 Franklin is a command line utility, written in crystal, that allows searching public libraries powered by Overdrive. It supports multiple library searching for those that have accounts in more than one library (city, county, state, etc.)
 
-I previously wrote a version of this library [in ruby][https://github.com/ylansegal/franklin].
+I previously wrote a version of this library [in ruby](https://github.com/ylansegal/franklin).
 
 ## Installation
 
@@ -23,7 +23,7 @@ $ make test
 To build a binary:
 
 ```shell
-$ make build_for_release
+$ make bin/franklin
 ```
 
 **Note**: If you are using a Mac and homebrew, and you are getting errors related to `libssl`, it's likely that you need to set an environment variable to let crystal know where `openssl` is located. See [crystal-lang issue #4745](https://github.com/crystal-lang/crystal/issues/4745) for more information.
