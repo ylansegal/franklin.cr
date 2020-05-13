@@ -9,6 +9,8 @@ module Franklin
     end
 
     def persons_per_copy
+      return 0 if wait_list_size == 0 && total_copies == 0
+
       (wait_list_size.to_f / total_copies.to_f).round(1)
     end
   end

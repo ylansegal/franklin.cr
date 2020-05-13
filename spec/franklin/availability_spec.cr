@@ -27,5 +27,10 @@ module Franklin
     it "reports persons_per_copy" do
       subject.persons_per_copy.should eq(0.3)
     end
+
+    it "persons_per_copy does not return NAN" do
+      availability = Availability.new(library, 0, available_copies, 0)
+      availability.persons_per_copy.should eq(0)
+    end
   end
 end
