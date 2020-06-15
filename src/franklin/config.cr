@@ -3,15 +3,12 @@ require "yaml"
 
 module Franklin
   class Config
+    include YAML::Serializable
+
     DEFAULT_FILE_LOCATION = File.join(ENV["HOME"], ".franklin")
 
-    YAML.mapping(
-      libraries: Array(Library),
-      default_type: {
-        type:    String,
-        nilable: true,
-      }
-    )
+    property libraries : Array(Library)
+    property default_type : String? = nil
 
     def self.from_file(file : String | Nil = nil)
       file ||= DEFAULT_FILE_LOCATION

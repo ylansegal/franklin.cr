@@ -1,3 +1,6 @@
+# 0.3.12
+- Make code compatible with crystal 0.35.0
+
 # 0.3.11
 - Fix bug that crashes program when library returns 0 for wait_list_size and total_copies.
 

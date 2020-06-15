@@ -3,20 +3,20 @@ require "json"
 module Franklin
   module Overdrive
     struct Data
-      JSON.mapping(
-        data: Hash(String, Overdrive::Entry)
-      )
+      include JSON::Serializable
+
+      property data : Hash(String, Overdrive::Entry)
     end
 
     struct Entry
-      JSON.mapping(
-        title: String,
-        firstCreatorName: String,
-        type: Type,
-        ownedCopies: {type: Int32, default: 1},
-        availableCopies: {type: Int32, default: 1},
-        holdsCount: {type: Int32, default: 0}
-      )
+      include JSON::Serializable
+
+      property title : String
+      property firstCreatorName : String
+      property type : Type
+      property ownedCopies : Int32 = 1
+      property availableCopies : Int32 = 1
+      property holdsCount : Int32 = 0
 
       def to_item(id : String) : Item
         Franklin::Item.new(id, title, firstCreatorName, type.name)
@@ -28,9 +28,9 @@ module Franklin
     end
 
     struct Type
-      JSON.mapping(
-        name: String
-      )
+      include JSON::Serializable
+
+      property name : String
     end
   end
 end

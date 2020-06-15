@@ -30,7 +30,7 @@ rescue ex : ArgumentError
   #{parser}
   Franklin v#{Franklin::VERSION}
   ERROR
-rescue Errno
+rescue File::Error
   STDERR.puts <<-ERROR
   Oops! It looks like you have not configured franklin
   Please add a configuration file in $HOME/.franklin that looks like this:

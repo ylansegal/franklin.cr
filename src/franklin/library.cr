@@ -2,10 +2,10 @@ require "yaml"
 
 module Franklin
   struct Library
-    YAML.mapping(
-      name: String,
-      url: String
-    )
+    include YAML::Serializable
+
+    property name : String
+    property url : String
 
     def initialize(@name, @url)
     end
