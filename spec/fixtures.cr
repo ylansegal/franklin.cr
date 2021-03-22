@@ -12,8 +12,8 @@ module Franklin
   end
 
   struct Item
-    def self.random_fixture(type = "eBook")
-      new(Random::Secure.hex, Random::Secure.hex, Random::Secure.hex, type)
+    def self.random_fixture(type = nil)
+      new(Random::Secure.hex, Random::Secure.hex, Random::Secure.hex, type || "eBook")
     end
   end
 
