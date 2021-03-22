@@ -1,5 +1,8 @@
+# 0.3.14
+- Make code compatible with crystal 1.0.0
+
 # 0.3.13
-- Make c ode compatible with crystal 0.35.1
+- Make code compatible with crystal 0.35.1
 
 # 0.3.12
 - Make code compatible with crystal 0.35.0
