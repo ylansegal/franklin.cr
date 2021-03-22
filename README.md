@@ -6,7 +6,7 @@ I previously wrote a version of this library [in ruby](https://github.com/ylanse
 
 ## Installation
 
-In order to use, this program must be compiled from source. A working `crystal` compiler with version `0.23.1` or above is needed.
+In order to use, this program must be compiled from source. A working `crystal` compiler is needed. The version is governed by `.tool-versions` and can be installed with `asdf`.
 
 To install, clone this git repo:
 
