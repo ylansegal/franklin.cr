@@ -22,7 +22,7 @@ module Franklin
 
             result = AvailabilityDescription.new(availability, item).to_s
 
-            result.should eq("3.3 people/copy @ #{availability.library.name}")
+            result.should eq("3.2 people/copy @ #{availability.library.name}")
           end
         end
 
