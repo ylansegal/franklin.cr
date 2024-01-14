@@ -28,6 +28,19 @@ $ make bin/franklin
 
 **Note**: If you are using a Mac and homebrew, and you are getting errors related to `libssl`, it's likely that you need to set an environment variable to let crystal know where `openssl` is located. See [crystal-lang issue #4745](https://github.com/crystal-lang/crystal/issues/4745) for more information.
 
+### Troubleshooting
+
+If you encounter error messages like these:
+```
+ld: warning: no platform load command found in '/Users/ylansegal/.cache/crystal/Users-ylansegal-Personal-franklin.cr-spec/C-rystal.o0.o', assuming: macOS
+```
+
+You can [solve](https://github.com/crystal-lang/crystal/issues/13846) them by setting the following environment variable:
+
+```shell
+export CRYSTAL_OPTS="--link-flags=-Wl,-ld_classic"
+```
+
 ## Configuration
 
 Franklin needs to be configured with information about the Overdrive libraries it will search. It expects a file in YAML format to exist in your home directory called `.franklin`. The contents of the file should look like:
